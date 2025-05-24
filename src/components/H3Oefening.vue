@@ -2,14 +2,26 @@
     <div>
     <br>
     <br>
-    <h3>H3 oefening</h3>
-    <ul>
-        <li class="list-group-item" v-for="(werkgevert, index) in werkgeversOverzicht.werkgevers" v-bind:key="werkgevert.id" v-bind:title="werkgevert.name">
+    <h3>H3 + H4 oefening</h3>
+    <ul class="list-group">
+        <li class="list-group-item" v-for="(werkgevert, index) in werkgeversOverzicht.werkgevers" 
+            v-bind:key="werkgevert.id" v-bind:title="werkgevert.name" @click="selectCompany(index)">
         {{ werkgevert.id }} - 
       {{ werkgevert.name }} - 
       {{  werkgevert.year }}
         </li>
     </ul>
+
+    <h3>Selected company: </h3>
+    <ul class="list-group">
+        <li class="list-group-item" >id: {{ selectedCompany.id }}</li>
+        <li class="list-group-item" >name: {{ selectedCompany.name }}</li>
+        <li class="list-group-item" >place: {{ selectedCompany.place }}</li>
+        <li class="list-group-item" >year: {{ selectedCompany.year }}</li>
+        <li class="list-group-item" >salary: {{ selectedCompany.salary }}</li>
+    </ul>
+    <br>
+
     {{  name }}
     <br>
     {{ address }}
@@ -40,9 +52,22 @@ import werkgeversOverzicht from '@/data/H3Oefening'
                 profession: "Industrial programmer",
                 todo: "Clean kitchen",
                 isDisabled: true,
-                numbers: [10, 20, 30, 40, 50, 60]
+                numbers: [10, 20, 30, 40, 50, 60],
+                selectedCompanyIndex: 0
             }
-        }
+        },
+        methods: {
+            selectCompany(index) {
+                this.selectedCompanyIndex = index;
+            }
+        },        
+        computed: {
+          selectedCompany() {
+            return {
+              ...this.werkgeversOverzicht.werkgevers[this.selectedCompanyIndex]
+            }
+          }
+        }  
     }
 </script>
 

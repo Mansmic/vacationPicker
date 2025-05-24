@@ -26,6 +26,14 @@
     </li>
   </ul>
 
+  <h2>Other countries: </h2>
+  <input type="text" v-model="newCountry" @keyup.enter="addCountry(newCountry)" class="form-control-lg" placeholder="new country...">
+  <button @click="addCountry(newCountry)" class="btn btn-info">Add Country</button>
+  <h3>{{ newCountry }}</h3>
+  <ul class="list-group">
+    <li class="list-group-item" v-for="(country, index) in newCountries" :key="index">{{ country }}</li>
+  </ul>
+
   <h3>Teller: {{ counter }}</h3>
   <button v-on:click="increment()" class="btn btn-succes">+</button>
   <button @click="decrement()" class="btn btn-danger">-</button>
@@ -46,7 +54,9 @@
                 countryDataa,
                 header: "from VacationPicker: Vue vacation picker",
                 counter: 0,
-                selectedCountryIndex: 0
+                selectedCountryIndex: 0,
+                newCountry: '',
+                newCountries: []
             }
         },
         methods: {
@@ -61,6 +71,10 @@
           },
           selectCountry(index) {
             this.selectedCountryIndex = index;
+          },
+          addCountry() {
+            this.newCountries.push(this.newCountry);
+            this.newCountry= '';
           }
         },
         computed: {

@@ -34,6 +34,14 @@
     <li class="list-group-item" v-for="(country, index) in newCountries" :key="index">{{ country }}</li>
   </ul>
 
+  <h2>Destinations cheaper than: </h2>
+  <select class="form-control-lg" v-model="selectedCost" @change="filterCountries()">
+    <option v-for="(cost, index) in costs" :key="index" :value="cost">{{ cost }}</option>
+  </select>
+  <ul class="list-group">
+    <li v-for="(country, index) in filteredCountries" :key="index" class="list-group-item">{{ country.name }} (EUR: {{ country.cost }})</li>
+  </ul>
+
   <h3>Teller: {{ counter }}</h3>
   <button v-on:click="increment()" class="btn btn-succes">+</button>
   <button @click="decrement()" class="btn btn-danger">-</button>
@@ -56,7 +64,10 @@
                 counter: 0,
                 selectedCountryIndex: 0,
                 newCountry: '',
-                newCountries: []
+                newCountries: [],
+                selectedCost: 1000,
+                costs: [1000,2000,3000,4000,5000,6000],
+                filteredCountries: []
             }
         },
         methods: {
@@ -75,6 +86,9 @@
           addCountry() {
             this.newCountries.push(this.newCountry);
             this.newCountry= '';
+          },
+          filterCountries() {
+            this.filteredCountries=this.countryDataa.countries.filter(country => country.cost < this.selectedCost)
           }
         },
         computed: {

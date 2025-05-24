@@ -37,6 +37,9 @@
     import mixins from '@/Mixins/mixins'
     export default {
         name: "VacationPicker",
+        created() {
+          console.log('Component vacationpicker.vue created');
+        },
         mixins: [mixins],
         data(){
             return {

@@ -34,8 +34,10 @@
 
 <script>
     import countryDataa from '@/data/countryData.js'
+    import mixins from '@/Mixins/mixins'
     export default {
         name: "VacationPicker",
+        mixins: [mixins],
         data(){
             return {
                 countryDataa,
@@ -56,9 +58,6 @@
           },
           selectCountry(index) {
             this.selectedCountryIndex = index;
-          },
-          getImgUrl(img) {
-            return new URL('../assets/countries/' + img, import.meta.url).href;
           }
         },
         computed: {

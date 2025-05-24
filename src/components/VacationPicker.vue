@@ -18,6 +18,9 @@
     <li class="list-group-item">{{ selectedCountry.capital }}</li>
     <li class="list-group-item">{{ selectedCountry.cost }}</li>
     <li class="list-group-item">{{ selectedCountry.details }}</li>
+    <li class="list-group-item" v-if="isExpensive">
+      <span class="badge rounded-pill text-bg-danger">Expensive!</span>
+    </li>
   </ul>
 
   <h3>Teller: {{ counter }}</h3>
@@ -57,7 +60,10 @@
             return {
               ...this.countryDataa.countries[this.selectedCountryIndex]
             }
-          }
+          },
+          isExpensive() {
+              return this.countryDataa.countries[this.selectedCountryIndex].cost > 998;
+            }
         }
     }
 </script>

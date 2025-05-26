@@ -12,7 +12,7 @@
   </ul>
 
   <div class="col-6">
-    <countryDetail :country="selectedCountry" />
+    <countryDetail v-if="selectedCountry" :country="selectedCountry" :name="selectedCountry.name" />
   </div>
   
 

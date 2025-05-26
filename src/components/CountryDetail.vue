@@ -23,7 +23,21 @@
 import mixins from '@/Mixins/mixins'
   export default {
     name: "countryDetail",
-    props: ['country'],
+    props: {
+      country: {
+        type: Object,
+        required: true
+      },
+      name: {
+        type: String,
+        required: true
+      },
+      number: {
+        type: Number,
+        required: false,
+        default: 100
+      }
+    },
     mixins: [mixins],
     computed: {
           isExpensive() {

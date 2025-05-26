@@ -1,31 +1,43 @@
 <template>
-  <h3>Selected country:</h3>
+
+<h2>Selected country: </h2>
+<div>
   <ul class="list-group">
-    <li class="list-group-item">{{ selectedCountry.id }}</li>
-    <li class="list-group-item">{{ selectedCountry.name }}</li>
-    <li class="list-group-item">{{ selectedCountry.capital }}</li>
-    <li class="list-group-item">{{ selectedCountry.cost }}</li>
-    <li class="list-group-item">{{ selectedCountry.details }}</li>
+    <li class="list-group-item">{{ country.id }}</li>
+    <li class="list-group-item">{{ country.name }}</li>
+    <li class="list-group-item">{{ country.capital }}</li>
+    <li class="list-group-item">{{ country.cost }}</li>
+    <li class="list-group-item">{{ country.details }}</li>
+    <li class="list-groupp-item">
+      <img :src="getImgUrl(country.img)" :alt="country.img" class="img-fluid">
+    </li>
+    <!--
     <li class="list-group-item" v-if="isExpensive">
       <span class="badge rounded-pill text-bg-danger">Expensive!</span>
     </li>
-    <li  class="list-group-item">
-      <img :src="getImgUrl(selectedCountry.img)" :alt="selectedCountry.img" class="img-fluid">
-    </li>
+  -->
   </ul>
+</div>  
+
+<!--
+script
+ ,
+    computed: {
+          isExpensive() {
+              return this.countryDataa.countries[this.selectedCountryIndex].cost > 998;
+            }
+        }
+
+-->
+
 </template>
 
 <script>
-    export default {
-        name: "CountryDetail",
-        props: ['country'],
-
-        computed: {
-            isExpensive() {
-                return this.countryDataa.countries[this.selectedCountryIndex].cost > 998;
-    }
-
-        } 
-    }
+import mixins from '@/Mixins/mixins'
+  export default {
+    name: "countryDetail",
+    props: ['country'],
+    mixins: [mixins]  
+  }
 </script>
 

@@ -17,7 +17,7 @@
     <h1>App.Vue 3 applicatie vacation picker</h1>
     <br>
     <VacationPicker/>
-    <H3Oefening />
+    <!-- <H3Oefening /> -->
   </div>
 </template>
 

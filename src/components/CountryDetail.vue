@@ -36,6 +36,13 @@ import mixins from '@/Mixins/mixins'
         type: Number,
         required: false,
         default: 100
+      },
+      messageType: {
+        type: String,
+        required: true,
+        validator: (value) => {
+          return ['warning', 'succes', 'info'].indexOf(value) !== -1;
+        }
       }
     },
     mixins: [mixins],

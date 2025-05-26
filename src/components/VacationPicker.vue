@@ -11,6 +11,7 @@
     </li>
   </ul>
 
+  <!-- moved to countryDetail.vue
   <h2>Selected country: </h2>
   <ul class="list-group">
     <li class="list-group-item">{{ selectedCountry.id }}</li>
@@ -25,6 +26,16 @@
       <span class="badge rounded-pill text-bg-danger">Expensive!</span>
     </li>
   </ul>
+  -->
+
+  <!-- THIS GENERATES AN ERROR ON selectedCountry
+  -->
+    <div class="col-6">
+    <countryDetail :country="selectedCountry" />
+  </div>
+  
+
+
 
   <h2>Other countries: </h2>
   <input type="text" v-model="newCountry" @keyup.enter="addCountry(newCountry)" class="form-control-lg" placeholder="new country...">
@@ -51,10 +62,15 @@
 <script>
     import countryDataa from '@/data/countryData.js'
     import mixins from '@/Mixins/mixins'
+    import countryDetail from '@/components/CountryDetail.vue'
+    
     export default {
         name: "VacationPicker",
         created() {
           console.log('Component vacationpicker.vue created');
+        },
+        components: {
+          countryDetail
         },
         mixins: [mixins],
         data(){
@@ -96,10 +112,7 @@
             return {
               ...this.countryDataa.countries[this.selectedCountryIndex]
             }
-          },
-          isExpensive() {
-              return this.countryDataa.countries[this.selectedCountryIndex].cost > 998;
-            }
+          }
         }
     }
 </script>

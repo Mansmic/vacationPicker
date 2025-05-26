@@ -11,26 +11,7 @@
     </li>
   </ul>
 
-  <!-- moved to countryDetail.vue
-  <h2>Selected country: </h2>
-  <ul class="list-group">
-    <li class="list-group-item">{{ selectedCountry.id }}</li>
-    <li class="list-group-item">{{ selectedCountry.name }}</li>
-    <li class="list-group-item">{{ selectedCountry.capital }}</li>
-    <li class="list-group-item">{{ selectedCountry.cost }}</li>
-    <li class="list-group-item">{{ selectedCountry.details }}</li>
-    <li class="list-groupp-item">
-      <img :src="getImgUrl(selectedCountry.img)" :alt="selectedCountry.img" class="img-fluid">
-    </li>
-    <li class="list-group-item" v-if="isExpensive">
-      <span class="badge rounded-pill text-bg-danger">Expensive!</span>
-    </li>
-  </ul>
-  -->
-
-  <!-- THIS GENERATES AN ERROR ON selectedCountry
-  -->
-    <div class="col-6">
+  <div class="col-6">
     <countryDetail :country="selectedCountry" />
   </div>
   

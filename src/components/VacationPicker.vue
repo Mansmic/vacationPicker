@@ -14,9 +14,11 @@
     </li>
   </ul>
 
+  <collapsableSection>
   <div class="col-6">
     <countryDetail v-if="selectedCountry" @rating="onRating($event)" :country="selectedCountry" :name="selectedCountry.name" :messageType="'warning'" />
   </div>
+  </collapsableSection>
   
 
 
@@ -46,7 +48,8 @@
 <script>
     import countryDataa from '@/data/countryData.js'
     import mixins from '@/Mixins/mixins'
-    import countryDetail from '@/components/countryDetail.vue'
+    import countryDetail from '@/components/CountryDetail.vue'
+    import collapsableSection from '@/shared/collapsableSection.vue';
     
     export default {
         name: "VacationPicker",
@@ -54,7 +57,8 @@
           console.log('Component vacationpicker.vue created');
         },
         components: {
-          countryDetail
+          countryDetail,
+          collapsableSection
         },
         mixins: [mixins],
         data(){

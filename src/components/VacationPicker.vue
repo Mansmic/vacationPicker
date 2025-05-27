@@ -8,11 +8,14 @@
     <li class="list-group-item" v-for="(countrytje, index) in countryDataa.countries" v-bind:key="countrytje.id" v-bind:title="countrytje.details" @click="selectCountry(index)">
         {{ countrytje.id }} - 
       {{ countrytje.name }}
+      <span class="float-end badge rounded-pill bg-secondary" v-if="countrytje.rating !== 0">
+        {{ countrytje.rating }}
+      </span>
     </li>
   </ul>
 
   <div class="col-6">
-    <countryDetail v-if="selectedCountry" :country="selectedCountry" :name="selectedCountry.name" :messageType="'warning'" />
+    <countryDetail v-if="selectedCountry" @rating="onRating($event)" :country="selectedCountry" :name="selectedCountry.name" :messageType="'warning'" />
   </div>
   
 
@@ -43,7 +46,7 @@
 <script>
     import countryDataa from '@/data/countryData.js'
     import mixins from '@/Mixins/mixins'
-    import countryDetail from '@/components/CountryDetail.vue'
+    import countryDetail from '@/components/countryDetail.vue'
     
     export default {
         name: "VacationPicker",
@@ -86,6 +89,9 @@
           },
           filterCountries() {
             this.filteredCountries=this.countryDataa.countries.filter(country => country.cost < this.selectedCost)
+          },
+          onRating(rating) {
+            this.countryDataa.countries[this.selectedCountryIndex].rating += rating;
           }
         },
         computed: {

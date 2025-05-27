@@ -6,7 +6,8 @@ const countryData = {
             capital: 'Washington',
             cost: 1250,
             details: 'United States are among the most visited ...',
-            img: 'washington.jpg'
+            img: 'washington.jpg',
+            rating: 0
         },                     
         {
             id: 2, 
@@ -14,7 +15,8 @@ const countryData = {
             capital: 'Amsterdam',
             cost: 950,
             details: 'The Netherlands is a  beautifull ...',
-            img: 'Amsterdam.jpg'
+            img: 'Amsterdam.jpg',
+            rating: 0
         },                     
         {
             id: 3, 
@@ -22,7 +24,8 @@ const countryData = {
             capital: 'London',
             cost: 999,
             details: 'England is ...',
-            img: 'London.jpg'
+            img: 'London.jpg',
+            rating: 0
         },
         {
             id: 4, 
@@ -30,7 +33,8 @@ const countryData = {
             capital: 'Paris',
             cost: 998,
             details: 'France is ...',
-            img: 'Paris.jpg'
+            img: 'Paris.jpg',
+            rating: 0
         },
         {
             id: 5, 
@@ -38,7 +42,8 @@ const countryData = {
             capital: 'Berlin',
             cost: 997,
             details: 'Germany is ...',
-            img: 'Berlin.jpg'
+            img: 'Berlin.jpg',
+            rating: 0
         }
     ]
 }

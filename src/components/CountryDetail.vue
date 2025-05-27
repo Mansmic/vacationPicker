@@ -8,6 +8,14 @@
     <li class="list-group-item">{{ country.capital }}</li>
     <li class="list-group-item">{{ country.cost }}</li>
     <li class="list-group-item">{{ country.details }}</li>
+    <li class="list-group-item">{{ country.rating }}</li>
+    <li class="list-group-item">
+      {{ country.name }} 
+      <span class="float-end">
+        <button @click="setRating(1)" class="...">+1</button>
+        <button @click="setRating(-1)" class="...">-1</button>
+      </span>
+    </li>
     <li class="list-groupp-item">
       <img :src="getImgUrl(country.img)" :alt="country.img" class="img-fluid">
     </li>
@@ -45,12 +53,18 @@ import mixins from '@/Mixins/mixins'
         }
       }
     },
+    methods: {
+      setRating(value) {
+        this.$emit('rating', value);
+      }
+    }    ,
     mixins: [mixins],
     computed: {
           isExpensive() {
               return this.country.cost > 998
             }
-        }
+        },
+    emits: ['rating'],
   }
 </script>
 
